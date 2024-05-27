@@ -1,0 +1,99 @@
+.pesquisar{
+    background-color: #fff;
+    color: #000000;
+    border-radius: 15px;
+    max-width: 280px;
+    width: 100%;
+    padding: 5px;
+}
+.iniciobody{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.iniciomain{
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resume{
+    display: flex;
+    padding: 10px 0;
+    gap: 40px;
+    width:100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.resume>div{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 150px;
+}
+.newItem{
+    display: flex;
+    gap: 10px;
+    align-items: end;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.divDesc, .divAmount, .divType{
+    display: flex;
+    flex-direction: column;
+}
+.newItem>button{
+    background-color: rgb(36, 107, 148);
+    color: #fff;
+    border:none;
+    padding: 0 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 34px;
+}
+.input, select{
+    padding: 5px;
+}
+.divTable{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+table{
+    width:98%;
+    padding: 20px 0px;
+    border-radius: 5px;
+}
+th{
+    text-align: start;
+    border-bottom: inset;
+    padding-bottom: 5px;
+}
+
+.bxs-chevron-up-circle{
+    color: #00c9a7;
+    font-size: 25px;
+}
+.bxs-chevron-down-circle{
+    color: #d83121;
+    font-size: 25px;
+}
+.columnAction{
+    width: 40px;
+    align-items: center;
+}
+.columnAction>button{
+    background-color: transparent;
+    border: none;
+}
+.columnAmount{
+    width: 30%;
+}
+.columnType{
+    align-items: center;
+}

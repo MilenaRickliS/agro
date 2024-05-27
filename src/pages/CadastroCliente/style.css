@@ -1,0 +1,122 @@
+
+.input-group {    
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.input-group-append {
+    margin-left: -50px;
+    display: flex;
+}
+.input-group-text {
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 15px;
+}
+.input-group-text:hover{
+    cursor: pointer;
+}
+.container-cadastro {
+    background-color: #fff; /* Cor de fundo dos contêineres */
+    padding: 20px; /* Espaçamento interno dos contêineres */
+    border-radius: 5px; /* Borda arredondada */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    width: 100%;
+    max-width: 800px;
+  }
+.form-cadastro{
+    width: 100%; /* Largura total */
+    padding: 5px; /* Espaçamento interno */
+    margin: 10px; /* Espaçamento abaixo do input */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 5px; /* Borda arredondada */
+    max-width: 200px;
+  }
+  
+  /* Estilos para os botões */
+  .button-cadastro {
+    padding: 10px 20px; /* Espaçamento interno */
+    background-color: #137a94; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Borda arredondada */
+    cursor: pointer; /* Cursor de ponteiro */
+    transition: background-color 0.3s ease; /* Transição suave */
+    margin: 5px;
+  }
+  
+  .button-cadastro:hover {
+    background-color: #10313a; /* Cor de fundo do botão ao passar o mouse */
+  }
+
+  .list{
+    list-style: none;
+    background-color: #e3f1e5;
+    padding: 20px; /* Espaçamento interno dos contêineres */
+    border-radius: 5px; /* Borda arredondada */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    width: 100%;
+    max-width: 800px;
+  }
+  .list-button{
+    color: #fff;
+    background-color: #13941c;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+  .list-button:hover{
+    background-color: #15561a;
+  }
+  .lixo{
+    width: 40px;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 60px;
+    color: red;
+    transition: transform 1s;
+    transform:  scale(1);
+}
+.lixo:hover{
+    transform:  scale(1.2);
+  
+}
+
+@media only screen and (max-width: 940px){
+    .container-cadastro {
+        width: 100%;
+        max-width: 650px;
+      }
+      .list{
+        width: 100%;
+        max-width: 650px;
+      }
+}
+@media only screen and (max-width: 770px){
+    .container-cadastro {
+        width: 100%;
+        max-width: 250px;
+      }
+      .list{
+        width: 100%;
+        max-width: 250px;
+      }
+}

@@ -1,0 +1,91 @@
+
+footer {
+    padding: 100px;
+    box-shadow: 0 0 40px 10px #0000001d;
+    background-color: #113e1d;
+}
+
+footer .flex {
+    justify-content: space-between;
+}
+
+footer .line-footer {
+    padding: 20px 0;
+}
+
+.borda {
+    border-top: 2px solid #f5c000;
+}
+
+footer .line-footer p i {
+    color: #ffc800;
+    font-size: 22px;
+}
+
+footer .line-footer p a {
+    color: #EEE1B3;
+}
+.logo-footer{
+    width: 150px;
+    position: relative;
+}
+.logo-footer img{
+    width: 100%;
+}
+
+
+footer nav.menu-footer a{
+    background-color: #EEE1B3;
+    padding: 5px;
+    border-radius: 25px;
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+    font-size: 12px;
+    margin: 5px;
+}
+
+footer nav.menu-footer a:hover {
+    color: #000;
+    transform: scale(1.05);
+}
+
+footer nav ul {
+    list-style-type: none;
+}
+
+footer nav.menu-footer ul li {
+    display: inline-block;
+    padding: 0 10px;
+}
+.bemvindo{
+    color: #EEE1B3;
+}
+#contato-footer{
+    display: none;
+}
+.btn-social button {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    background-color: #EEE1B3;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: .2s;
+    color: #000;
+}
+
+    @media only screen and (max-width: 1020px){
+        #contato-footer{
+            display: block;
+        }
+    }
+    @media only screen and (max-width: 1020px){
+        .bemvindo li{
+            font-size: 15px;
+        }
+    }
+    
