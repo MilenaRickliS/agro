@@ -13,7 +13,7 @@ import {
 } from 'firebase/firestore';
 
 const Inicio = () => {
-  const { totalRef, quantRacaoMes, setQuantRacaoMes } = useContext(AppContext);
+  const { totalRef } = useContext(AppContext);
   const [items, setItems] = useState([]);
   const [descItem, setDescItem] = useState("");
   const [amount, setAmount] = useState("");
@@ -140,9 +140,10 @@ const Inicio = () => {
   );
 
   return (
-    <div className="container">
+    <div>
       <Header />
       <main id="main" className="flexbox-col">
+        <div className="container">
         <h2>Estoque</h2>
         <p>Atualize sempre que possível o seu estoque!</p>
         <div className="resume">
@@ -154,10 +155,10 @@ const Inicio = () => {
             Saídas:
             <span ref={expensesRef}>0.00</span>
           </div>
-          <div>
+          {/* <div>
             Total:
-            <span ref={totalRef}>0.00</span>
-          </div>
+            <span ref={totalRef}></span>
+          </div> */}
         </div>
         <div className="newItem">
           <div className="divDesc">
@@ -238,10 +239,11 @@ const Inicio = () => {
             })}</tbody>
           </table>
         </div>
-        <div>
-          <p>Total em seu estoque: <span ref={totalRef}>0.00</span></p>
-          <p>Total que seus clientes precisam no mês: <span ref={racaoRef}>0.00</span></p>
-          <p>Diferença: <span ref={totalFinalRef}>0.00</span></p>
+        <div className="resume">
+          <div>Total em seu estoque: <span ref={totalRef}>0.00</span></div>
+          <div>Total que seus clientes precisam no mês: <span ref={racaoRef}>0.00</span></div>
+          <div>Diferença: <span ref={totalFinalRef}>0.00</span></div>
+        </div>
         </div>
       </main>
       <div>

@@ -113,46 +113,47 @@ function CadastroCliente() {
       console.log("DEU ALGUM ERRO AO BUSCAR");
     })
   }
+  const [searchQuery, setSearchQuery] = useState('');
+
   const handleSearch = (event) => {
-    const searchQuery = event.target.value.toLowerCase();
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
     const filtered = clientes.filter((cliente) => {
       return (
-        cliente.nome.toLowerCase().includes(searchQuery) ||
-        cliente.propriedade.toLowerCase().includes(searchQuery)
+        cliente.nome.toLowerCase().includes(query) ||
+        cliente.propriedade.toLowerCase().includes(query)
       );
     });
     setFilteredClientes(filtered);
   };
   
 
-  // Função para editar um cliente existente no Firestore.
-  async function editarCliente(){
-    const docRef = doc(db, "clientes-di", idCliente);
-    await updateDoc(docRef, {
-      nome: doc.data().nome,
-      propriedade: doc.data().propriedade, 
-      email: doc.data().email,
-      telefone: doc.data().telefone,
-      cpf: doc.data().cpf,
-      quantAnimais: doc.quantAnimais,   
-      quantRacaoMes: doc.data().quantRacaoMes,
-      
-    })
-    .then(() => {
-      console.log("CLIENTE ATUALIZADO!");
-      setNome('');
-      setPropriedade('');
-      setEmailCliente('');
-      setTelefone('');
-      setCpf('');
-      setQuantAnimais('');
-      setQuantRacaoMes('');
-      
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  }
+// Função para editar um cliente existente no Firestore.
+async function editarCliente() {
+  const docRef = doc(db, "clientes-di", idCliente);
+  await updateDoc(docRef, {
+    nome: nome,
+    propriedade: propriedade,
+    email: emailCliente,
+    telefone: telefone,
+    cpf: cpf,
+    quantAnimais: parseInt(quantAnimais),
+    quantRacaoMes: parseInt(quantRacaoMes),
+  })
+  .then(() => {
+    console.log("CLIENTE ATUALIZADO!");
+    setNome('');
+    setPropriedade('');
+    setEmailCliente('');
+    setTelefone('');
+    setCpf('');
+    setQuantAnimais('');
+    setQuantRacaoMes('');
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
 
   // Função para excluir um cliente do Firestore.
   async function excluirCliente(id){
@@ -239,13 +240,17 @@ function CadastroCliente() {
           <p>Aqui está uma lista de todos os seus clientes!</p>
           <br/><br/>
           <div className="input-group">
-              <input className='pesquisar' type="search" placeholder="Pesquisar ..." onChange={handleSearch}/>
-              <div class="input-group-append">
-                <div class="input-group-text"><ion-icon name="search-outline"></ion-icon></div>
-              </div>
+            <input className='pesquisar' type="search" placeholder="Pesquisar..." onChange={handleSearch}/>
+            <div class="input-group-append">
+              <div class="input-group-text"><ion-icon name="search-outline"></ion-icon></div>
+            </div>
           </div>
           <ul className="list">
-            {filteredClientes.length ? (
+            {searchQuery.length > 0 && filteredClientes.length === 0 ? (
+              <li>
+                <strong>Cliente não encontrado... :(</strong>
+              </li>
+            ) : (
               filteredClientes.map((cliente) => {
                 return (
                   <li key={cliente.id}>
@@ -257,10 +262,6 @@ function CadastroCliente() {
                   </li>
                 );
               })
-            ) : (
-              <li>
-                <strong>Cliente não encontrado... :(</strong>
-              </li>
             )}
           </ul>
           
