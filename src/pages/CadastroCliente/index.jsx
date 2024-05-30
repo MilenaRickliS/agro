@@ -26,7 +26,7 @@ function CadastroCliente() {
   // Estado para armazenar o nome da propriedade.
   const [propriedade, setPropriedade] = useState('');
   // Estado para armazenar o ID da cliente a ser editado ou excluído.
-  const [idCliente, setIdCliente] = useState('9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d');
+  const [idCliente, setIdCliente] = useState('');
   // Estado para armazenar o email do cliente.
   const [emailCliente, setEmailCliente] = useState('');
   // Estado para armazenar o telefone do cliente.
@@ -173,15 +173,7 @@ async function editarCliente() {
           <p>Cadastre um novo cliente aqui!</p>
           <br></br>
       
-      <div className="container-cadastro">
-        <label>ID:</label>
-        <input 
-          // disabled 
-          className="form-cadastro"
-        placeholder='Digite o ID do Cliente'
-        value={idCliente}
-        onChange={ (e) => setIdCliente(e.target.value) }
-        /> 
+      <div className="container-cadastro"> 
         <label>Nome:</label>
         <input className="form-cadastro"
         placeholder='Digite o nome completo'
@@ -235,7 +227,7 @@ async function editarCliente() {
         <div>
           <button className="button-cadastro" onClick={handleAdd}>Adicionar</button>
           {/* <button className="button-cadastro" onClick={buscarClientes}>Buscar Cliente</button> */}
-          <button className="button-cadastro" onClick={editarCliente}>Editar Cliente</button>
+          
         </div>
 
       </div>
@@ -244,8 +236,8 @@ async function editarCliente() {
           <br/><br/>
           <div className="input-group">
             <input className='pesquisar' type="search" placeholder="Pesquisar..." onChange={handleSearch}/>
-            <div class="input-group-append">
-              <div class="input-group-text"><ion-icon name="search-outline"></ion-icon></div>
+            <div className="input-group-append">
+              <div className="input-group-text"><ion-icon name="search-outline"></ion-icon></div>
             </div>
           </div>
           <ul className="list">
@@ -262,6 +254,7 @@ async function editarCliente() {
                     <span>Propriedade: {cliente.propriedade}</span> <br/>
                     <button className="list-button"><Link className="list-button" to={`/detalhes/${cliente.id}`}>Saiba Mais!</Link></button>
                     <button onClick={ () => excluirCliente(cliente.id) } className="lixo"> <i className="bx bx-trash"></i></button> <br/><br/>
+                    <button className="button-cadastro"><Link to ={`/editar/${cliente.id}`}>Editar Cliente</Link></button>
                   </li>
                 );
               })
