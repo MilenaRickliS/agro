@@ -26,7 +26,7 @@ function CadastroCliente() {
   // Estado para armazenar o nome da propriedade.
   const [propriedade, setPropriedade] = useState('');
   // Estado para armazenar o ID da cliente a ser editado ou excluído.
-  const [idCliente, setIdCliente] = useState('');
+  const [idCliente, setIdCliente] = useState('9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d');
   // Estado para armazenar o email do cliente.
   const [emailCliente, setEmailCliente] = useState('');
   // Estado para armazenar o telefone do cliente.
@@ -57,6 +57,7 @@ function CadastroCliente() {
     })
     })
     setClientes(listaClientes);
+    setFilteredClientes(listaClientes);
     })
     }
     loadClientes();
@@ -174,7 +175,9 @@ async function editarCliente() {
       
       <div className="container-cadastro">
         <label>ID:</label>
-        <input className="form-cadastro"
+        <input 
+          // disabled 
+          className="form-cadastro"
         placeholder='Digite o ID do Cliente'
         value={idCliente}
         onChange={ (e) => setIdCliente(e.target.value) }
