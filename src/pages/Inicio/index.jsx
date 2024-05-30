@@ -47,9 +47,14 @@ const Inicio = () => {
       racaoRef.current.innerHTML = totalRacao.toFixed(2);
     }
     const totalEstoque = totalRef.current ? parseFloat(totalRef.current.innerHTML) || 0 : 0;
-    const totalFinal = totalRacao - totalEstoque;
+    const totalFinal = totalEstoque - totalRacao;
     if (totalFinalRef.current) {
       totalFinalRef.current.innerHTML = totalFinal.toFixed(2);
+      if(totalFinal<0){
+        totalFinalRef.current.style.color = "red";
+      }else{
+        totalFinalRef.current.style.color = "green";
+      }
     }
   };
 

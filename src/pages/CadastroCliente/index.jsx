@@ -254,7 +254,7 @@ async function editarCliente() {
                     <span>Propriedade: {cliente.propriedade}</span> <br/>
                     <button className="list-button"><Link className="list-button" to={`/detalhes/${cliente.id}`}>Saiba Mais!</Link></button>
                     <button onClick={ () => excluirCliente(cliente.id) } className="lixo"> <i className="bx bx-trash"></i></button> <br/><br/>
-                    <button className="button-cadastro"><Link to ={`/editar/${cliente.id}`}>Editar Cliente</Link></button>
+                    <Link className="button-editar" to ={`/editar/${cliente.id}`}>Editar Cliente</Link> <br/><br/><br/>
                   </li>
                 );
               })

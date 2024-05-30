@@ -63,6 +63,24 @@
     background-color: #10313a; /* Cor de fundo do botão ao passar o mouse */
   }
 
+  .button-editar{
+    padding: 10px ; /* Espaçamento interno */
+    background-color: #137a94; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Borda arredondada */
+    cursor: pointer; /* Cursor de ponteiro */
+    transition: background-color 0.3s ease; /* Transição suave */
+  
+    text-decoration: none;
+    
+  }
+
+  
+  .button-editar:hover {
+    background-color: #10313a; /* Cor de fundo do botão ao passar o mouse */
+  }
+
   .list{
     list-style: none;
     background-color: #e3f1e5;
