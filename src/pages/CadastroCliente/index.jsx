@@ -1,9 +1,10 @@
+import Fuse from "fuse.js";
 import "./style.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import AppContext from "../../contexts/AppContext";
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { db } from '../../services/firebaseConnection';
 import {
   doc,
@@ -18,6 +19,8 @@ import {
 } from 'firebase/firestore';
 
 function CadastroCliente() { 
+
+  const fuse = useRef(null);
   const [filteredClientes, setFilteredClientes] = useState([]);
   //context para armazenar a quantidade de ração dos clientes
   const { quantRacaoMes, setQuantRacaoMes, clientes, setClientes} = useContext(AppContext);
@@ -35,9 +38,6 @@ function CadastroCliente() {
   const [cpf, setCpf] = useState('');
   // Estado para armazenar quantidade de cabeça de gado.
   const [quantAnimais, setQuantAnimais] = useState('');
-
-  
-  
 
   // Efeito que carrega os clientes do Firestore sempre que o componente é montado.
   useEffect(() => {
@@ -88,73 +88,7 @@ function CadastroCliente() {
     .catch((error) => {
       console.log("ERRO " + error);
     })
-  }
-
-  // Função para buscar todos os clientes do Firestore.
-  async function buscarClientes(){
-    const postsRef = collection(db, "clientes-di");
-    await getDocs(postsRef)
-    .then((snapshot) => {
-    let lista = [];
-    snapshot.forEach((doc) => {
-      lista.push({
-        id: doc.id,
-        nome: doc.data().nome,
-        propriedade: doc.data().propriedade, 
-        email: doc.data().email,
-        telefone: doc.data().telefone,
-        cpf: doc.data().cpf,
-        quantAnimais: doc.quantAnimais,   
-        quantRacaoMes: doc.data().quantRacaoMes,
-    })
-    })
-    setClientes(lista);
-    })
-    .catch((error) => {
-      console.log("DEU ALGUM ERRO AO BUSCAR");
-    })
-  }
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearch = (event) => {
-    const query = event.target.value.toLowerCase();
-    setSearchQuery(query);
-    const filtered = clientes.filter((cliente) => {
-      return (
-        cliente.nome.toLowerCase().includes(query) ||
-        cliente.propriedade.toLowerCase().includes(query)
-      );
-    });
-    setFilteredClientes(filtered);
-  };
-  
-
-// Função para editar um cliente existente no Firestore.
-async function editarCliente() {
-  const docRef = doc(db, "clientes-di", idCliente);
-  await updateDoc(docRef, {
-    nome: nome,
-    propriedade: propriedade,
-    email: emailCliente,
-    telefone: telefone,
-    cpf: cpf,
-    quantAnimais: parseInt(quantAnimais),
-    quantRacaoMes: parseInt(quantRacaoMes),
-  })
-  .then(() => {
-    console.log("CLIENTE ATUALIZADO!");
-    setNome('');
-    setPropriedade('');
-    setEmailCliente('');
-    setTelefone('');
-    setCpf('');
-    setQuantAnimais('');
-    setQuantRacaoMes('');
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
+  }  
 
   // Função para excluir um cliente do Firestore.
   async function excluirCliente(id){
@@ -164,6 +98,40 @@ async function editarCliente() {
     alert("CLIENTE DELETADO COM SUCESSO!");
   })
   }
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // const handleSearch = (event) => {
+  //   const query = event.target.value.toLowerCase();
+  //   setSearchQuery(query);
+  //   const filtered = clientes.filter((cliente) => {
+  //     return (
+  //       cliente.nome.toLowerCase().includes(query) ||
+  //       cliente.propriedade.toLowerCase().includes(query)
+  //     );
+  //   });
+  //   setFilteredClientes(filtered);
+  // };
+
+useEffect(() => {
+  if (clientes.length > 0) {
+    fuse.current = new Fuse(clientes, {
+      keys: ['nome', 'propriedade'],
+      threshold: 0.3,
+    });
+    setFilteredClientes(clientes); 
+  }
+}, [clientes]);
+const handleSearch = (event) => {
+  const query = event.target.value.toLowerCase();
+  setSearchQuery(query);
+  if (query.length === 0) {
+    setFilteredClientes(clientes); 
+  } else {
+    const results = fuse.current.search(query);
+    setFilteredClientes(results.map(result => result.item));
+  }
+};
 
   return (
       <div>
