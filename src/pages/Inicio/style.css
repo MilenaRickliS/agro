@@ -87,6 +87,9 @@ th{
     width: 40px;
     align-items: center;
 }
+.columnAction i:hover{
+   cursor: pointer;
+}
 .columnAction>button{
     background-color: transparent;
     border: none;

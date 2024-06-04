@@ -222,26 +222,36 @@ const Inicio = () => {
                 <th className="columnAction"></th>
               </tr>
             </thead>
-            <tbody>{filteredItems.map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>{item.descItem}</td>
-                  <td>{item.amount}</td>
-                  <td className="columnType">
-                    {item.type === "Entrada" ? (
-                      <i className="bx bxs-chevron-up-circle"></i>
-                    ) : (
-                      <i className="bx bxs-chevron-down-circle"></i>
-                    )}
-                  </td>
-                  <td className="columnAction">
-                    <button onClick={() => deleteItem(item.id)}>
-                      <i className="bx bx-trash"></i>
-                    </button>
+            <tbody>
+              {filteredItems.length > 0 ? (
+                filteredItems.map((item) => {
+                  return (
+                    <tr key={item.id}>
+                      <td>{item.descItem}</td>
+                      <td>{item.amount}</td>
+                      <td className="columnType">
+                        {item.type === "Entrada" ? (
+                          <i className="bx bxs-chevron-up-circle"></i>
+                        ) : (
+                          <i className="bx bxs-chevron-down-circle"></i>
+                        )}
+                      </td>
+                      <td className="columnAction">
+                        <button onClick={() => deleteItem(item.id)}>
+                          <i className="bx bx-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <tr>
+                  <td colSpan="4" style={{ textAlign: "center" }}><br/>
+                    Item não encontrado ...:(
                   </td>
                 </tr>
-              );
-            })}</tbody>
+              )}
+            </tbody>
           </table>
         </div>
         <div className="resume">
