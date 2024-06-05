@@ -50,6 +50,7 @@ function Detalhes() {
       <Header/>
     <main id="main" class="flexbox-col">
       <article className="container-cadastro">
+        <div className="saiba">
         <strong>Nome: {cliente.nome}</strong>
         <p >Propriedade: {cliente.propriedade}</p>
         <p >CPF/CNPJ: {cliente.cpf}</p>
@@ -57,6 +58,7 @@ function Detalhes() {
         <p >Telefone: {cliente.telefone}</p>
         <p >Quant.Animais: {cliente.quantAnimais}</p>
         <p >Quant. de Ração: {cliente.quantRacaoMes}</p>
+        </div>
       </article>
     </main>
     <Footer/>

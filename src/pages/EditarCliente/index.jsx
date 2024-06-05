@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import AppContext from "../../contexts/AppContext";
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from "react-router-dom";
 import { db } from '../../services/firebaseConnection';
 import {
   doc,
@@ -88,11 +89,13 @@ async function editarCliente() {
       <div>
         <div><Header/></div>
         <main id="main" className="flexbox-col">
+          
           <h2>Editar Clientes</h2>
           <p>Coloque aqui os novos dados do cliente!</p>
           <br></br>
       
       <div className="container-cadastro">
+        <Link className="voltar" to="/cadastro"> Voltar </Link> <br/><br/>
         <label>ID:</label>
         <input 
           disabled 
