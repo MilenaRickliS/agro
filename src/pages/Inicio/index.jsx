@@ -25,6 +25,10 @@ const Inicio = () => {
   const racaoRef = useRef(null);
   const totalFinalRef = useRef(null);
 
+const [filteredItems, setFilteredItems] = useState([]);
+const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('');
+const [cache, setCache] = useState({});
+
   useEffect(() => {
     async function loadClientes() {
       const unsub = onSnapshot(collection(db, "clientes-di"), (snapshot) => {
@@ -135,14 +139,43 @@ const Inicio = () => {
     getTotalsRacao();
   }, [items, lista]);
 
+
+  useEffect(() => {
+  const debounceTimeout = setTimeout(() => {
+    setDebouncedSearchQuery(searchQuery);
+  }, 500);
+
+  return () => {
+    clearTimeout(debounceTimeout);
+  };
+}, [searchQuery]);
+
+useEffect(() => {
+  if (debouncedSearchQuery === '') {
+    setFilteredItems(items);
+  } else {
+    const cachedResult = cache[debouncedSearchQuery];
+    if (cachedResult) {
+      setFilteredItems(cachedResult);
+    } else {
+      const filteredItems = items.filter((item) =>
+        item.descItem.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+        item.amount.toLowerCase().includes(debouncedSearchQuery)
+      );
+      setFilteredItems(filteredItems);
+      setCache((prevCache) => ({ ...prevCache, [debouncedSearchQuery]: filteredItems }));
+    }
+  }
+}, [debouncedSearchQuery, items, cache]);
+
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  const filteredItems = items.filter((item) =>
-    item.descItem.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.amount.toLowerCase().includes(searchQuery)
-  );
+  // const filteredItems = items.filter((item) =>
+  //   item.descItem.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //   item.amount.toLowerCase().includes(searchQuery)
+  // );
 
   return (
     <div>
