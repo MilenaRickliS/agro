@@ -76,7 +76,7 @@ export default function SignIn(){
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-            <Link to="/signup">Criar uma conta</Link>
+            <Link className='login-a' to="/signup">Criar uma conta</Link>
           </form>
         </div>
       </div>

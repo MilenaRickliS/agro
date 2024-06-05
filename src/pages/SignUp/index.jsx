@@ -56,10 +56,8 @@ export default function SignUp(){
           <button type="submit">
             {isRegistering ? 'Carregando...' : 'Cadastrar'}
           </button>
-          <Link to="/signin">Já possui uma conta? Faça login</Link>
+          <Link  className="login-a" to="/signin">Já possui uma conta? Faça login</Link>
         </form>
-
-
         </div>
 
       </div>

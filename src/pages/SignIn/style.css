@@ -9,6 +9,7 @@
     width: 100%;
     text-align: center;
     font-size: 18px;
+    
   }
   
   .login{
@@ -16,6 +17,9 @@
     width: 860px;
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    border-radius: 20px;
+    
   }
   
   .login-area{
@@ -25,6 +29,8 @@
     justify-content: space-between;
     border-bottom: #008e55 solid 5px;
     
+    
+    
   }
   
   .login-area img{
@@ -32,6 +38,7 @@
     height: 60px;
     padding: 10px;
     margin-left: 20px;
+   
   }
   .portal{
     color: #008e55;
@@ -46,6 +53,7 @@
     width: 500px;
     height: 400px;
     margin-right: 20px;  
+    
   }
   
   form{
@@ -87,19 +95,24 @@
     color: #fefefe;
     transform: scale(1.01);
   }
-
   
-  .login a{
+  .login-a {
     margin: 1.5rem 0;
     color: #008e55;
     cursor: pointer;
     transition: .2s;
     text-decoration: none;
   }
-  .login a:hover{
+  .login-a:visited{
+    color: #008e55;
+  }
+  .login-a:hover{
     color: #000000;
     text-decoration: none;
     transform: scale(1.05);
+  }
+  .login-a:active{
+    color: #1f4b3a;
   }
 
   @media only screen and (max-width: 900px){
