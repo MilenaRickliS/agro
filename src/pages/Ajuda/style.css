@@ -1,0 +1,108 @@
+/* Contact.css */
+.flexbox-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.contact_text {
+    font-size: 50px;
+    color: #18491b;
+    margin-bottom: 20px;
+    margin-top: -50px;
+   justify-content: center;
+   align-items: center;
+    display: flex;
+  }
+  
+.contact_p {
+    font-size: 25px;
+    color: #666;
+    line-height: 1.5;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+  }
+  .container-ajuda {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-left: 60px;
+}
+
+.contact {
+    padding: -300px 0;
+  }
+  .ajuda{
+    background-color: rgb(134, 165, 134);
+    padding: 60px;
+    margin-bottom: 100px;
+    margin-top: -20px;
+  }
+  .contact .pg-header {
+    background-color: rgb(134, 165, 134);
+    color: #114417;
+    padding: 60px 0;
+    margin-bottom: 100px;
+    margin-top: -20px;
+  }
+  
+  .contact .pg-header h1 {
+    margin: 0;
+  }
+  
+  .contact .content {
+    margin-top: 20px;
+  }
+  
+    .contact h2 {
+    color: #000000;
+  }
+
+    .contact h2 {
+    color: #dfdfdf;
+  }
+
+    .contact p {
+    color: #141614;
+  }
+
+  
+ /* Estilo para o formulário */
+ 
+  
+  .contact label {
+    
+    margin-bottom: 5px;
+  }
+  
+  .contact input,
+  .contact textarea {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .ajuda-button {
+    background-color: #358a37; 
+    color: #fff; 
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .ajuda-button:hover {
+    background-color: #204a21; /* Cor de fundo verde escuro ao passar o mouse */
+  } 
+  
