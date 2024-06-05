@@ -148,25 +148,25 @@ const [cache, setCache] = useState({});
   return () => {
     clearTimeout(debounceTimeout);
   };
-}, [searchQuery]);
+  }, [searchQuery]);
 
-useEffect(() => {
-  if (debouncedSearchQuery === '') {
-    setFilteredItems(items);
-  } else {
-    const cachedResult = cache[debouncedSearchQuery];
-    if (cachedResult) {
-      setFilteredItems(cachedResult);
+  useEffect(() => {
+    if (debouncedSearchQuery === '') {
+      setFilteredItems(items);
     } else {
-      const filteredItems = items.filter((item) =>
-        item.descItem.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
-        item.amount.toLowerCase().includes(debouncedSearchQuery)
-      );
-      setFilteredItems(filteredItems);
-      setCache((prevCache) => ({ ...prevCache, [debouncedSearchQuery]: filteredItems }));
+      const cachedResult = cache[debouncedSearchQuery];
+      if (cachedResult) {
+        setFilteredItems(cachedResult);
+      } else {
+        const filteredItems = items.filter((item) =>
+          item.descItem.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+          item.amount.toLowerCase().includes(debouncedSearchQuery)
+        );
+        setFilteredItems(filteredItems);
+        setCache((prevCache) => ({ ...prevCache, [debouncedSearchQuery]: filteredItems }));
+      }
     }
-  }
-}, [debouncedSearchQuery, items, cache]);
+  }, [debouncedSearchQuery, items, cache]);
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
